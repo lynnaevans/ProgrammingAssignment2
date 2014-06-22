@@ -35,3 +35,28 @@ cacheSolve <- function(x, ...) {
         I
         ## Return a matrix that is the inverse of 'x'
 }
+## Test harness
+## Generate the list of 4 functions
+i <- makeCacheMatrix()
+## Create a matrix to test and get its inverse
+theMatrix <- matrix(c(1,-1,1,1),nrow=2)
+theMatrix
+theInverse <- solve(theMatrix)
+theInverse
+## Use the set function to create the matrix
+i$set(theMatrix)
+## Now get it
+i$get()
+## Use the cacheSolve funciton to calculate the inverse the first time
+cacheSolve(i)
+## Do it again - should see a message as to source of inverse this time
+cacheSolve(i)
+## Repeat the above steps with a second test matrix
+theMatrix2 <- matrix(c(2,-2,2,2),nrow=2)
+theMatrix2
+theInverse2 <- solve(theMatrix2)
+theInverse2
+i$set(theMatrix2)
+i$get()
+cacheSolve(i)
+cacheSolve(i)
